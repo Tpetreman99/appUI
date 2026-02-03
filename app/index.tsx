@@ -5,6 +5,7 @@ import {
   Image,
   Dimensions,
   Pressable,
+  ScrollView,
 } from "react-native";
 import {
   Entypo,
@@ -25,151 +26,177 @@ export default function Feed() {
 
   return (
     <SafeAreaView style={s.container}>
-      {/* Nav Row */}
-      <View style={s.navRow}>
-        <View style={s.navLeft}>
+      <ScrollView>
+        {/* Nav Row */}
+        <View style={s.navRow}>
+          <View style={s.navLeft}>
+            <Entypo
+              name="chevron-thin-left"
+              size={22}
+              color="black"
+              style={{ marginVertical: "auto" }}
+            />
+            <Text style={s.navName}>nasa</Text>
+            <MaterialIcons
+              name="verified"
+              size={16}
+              color="#0397fe"
+              style={{ marginVertical: "auto" }}
+            />
+          </View>
           <Entypo
-            name="chevron-thin-left"
-            size={22}
-            color="black"
-            style={{ marginVertical: "auto" }}
-          />
-          <Text style={s.navName}>nasa</Text>
-          <MaterialIcons
-            name="verified"
-            size={16}
-            color="#0397fe"
+            name="dots-three-horizontal"
+            size={18}
+            color="grey"
             style={{ marginVertical: "auto" }}
           />
         </View>
-        <Entypo
-          name="dots-three-horizontal"
-          size={18}
-          color="grey"
-          style={{ marginVertical: "auto" }}
-        />
-      </View>
 
-      <View style={s.bio}>
-        {/* Profile Picture */}
-        <View style={s.topRow}>
-          <View style={s.profilePicContainer}>
-            <Image
-              style={s.profilePicture}
-              source={require("../assets/images/pfp.jpg")}
-            />
-          </View>
-
-          {/* Stats Row */}
-          <View style={s.statsRow}>
-            <View>
-              <Text style={{ marginBottom: 10, fontWeight: 700}}>NASA</Text>
-              <Text style={s.stat}>4,600</Text>
-              <Text style={s.statLabel}>posts</Text>
+        <View style={s.bio}>
+          {/* Profile Picture */}
+          <View style={s.topRow}>
+            <View style={s.profilePicContainer}>
+              <Image
+                style={s.profilePicture}
+                source={require("../assets/images/pfp.jpg")}
+              />
             </View>
 
-            <View>
-              <Text style={{ marginBottom: 10}}></Text>
-              <Text style={s.stat}>98.5M</Text>
-              <Text style={s.statLabel}>followers</Text>
+            {/* Stats Row */}
+            <View style={s.statsRow}>
+              <View>
+                <Text style={{ marginBottom: 10, fontWeight: 700 }}>NASA</Text>
+                <Text style={s.stat}>4,600</Text>
+                <Text style={s.statLabel}>posts</Text>
+              </View>
+
+              <View>
+                <Text style={{ marginBottom: 10 }}></Text>
+                <Text style={s.stat}>98.5M</Text>
+                <Text style={s.statLabel}>followers</Text>
+              </View>
+
+              <View>
+                <Text style={{ marginBottom: 10 }}></Text>
+                <Text style={s.stat}>92</Text>
+                <Text style={s.statLabel}>following</Text>
+              </View>
             </View>
+          </View>
 
-            <View>
-              <Text style={{ marginBottom: 10}}></Text>
-              <Text style={s.stat}>92</Text>
-              <Text style={s.statLabel}>following</Text>
+          <Text style={s.bioText}>
+            🚀 🌎 Exploring the universe and our home planet.
+          </Text>
+          <Text style={s.bioText}>Verification: nasa.gov/socialmedia</Text>
+
+          <View>
+            <Text>Followed by sam007_7, nolangooding and 23 others</Text>
+          </View>
+        </View>
+
+        {/* Contact Section */}
+        <View style={s.contactButtons}>
+          <View style={[s.buttons, s.followButton]}>
+            <Text style={[s.buttonText, s.buttonTextPrimary]}>Follow</Text>
+          </View>
+          <View style={[s.buttons, s.altButton]}>
+            <Text style={s.buttonText}>Message</Text>
+          </View>
+          <View style={[s.buttons, s.altButton]}>
+            <Text style={s.buttonText}>Email</Text>
+          </View>
+        </View>
+
+        {/* Circl Icons */}
+        <View style={s.circleIcons}>
+          <View style={s.circleItem}>
+            <View style={s.iconCircle}>
+              <MaterialIcons name="phone-iphone" size={24} color="#0066ff" />
             </View>
+            <Text style={s.circleText}>Wallpapers</Text>
+          </View>
+          <View style={s.circleItem}>
+            <View style={s.iconCircle}>
+              <MaterialCommunityIcons
+                name="google-downasaur"
+                size={24}
+                color="#0066ff"
+              />
+            </View>
+            <Text style={s.circleText}>Streaming</Text>
+          </View>
+          <View style={s.circleItem}>
+            <View style={s.iconCircle}>
+              <Entypo name="mic" size={24} color="#0066ff" />
+            </View>
+            <Text style={s.circleText}>Podcasts</Text>
+          </View>
+          <View style={s.circleItem}>
+            <View style={s.iconCircle}>
+              <FontAwesome6 name="shuttle-space" size={24} color="#0066ff" />
+            </View>
+            <Text style={s.circleText}>Missions</Text>
+          </View>
+          <View style={s.circleItem}>
+            <View style={s.iconCircle}>
+              <Foundation name="clipboard-pencil" size={24} color="#0066ff" />
+            </View>
+            <Text style={s.circleText}>Join Us</Text>
           </View>
         </View>
 
-        <Text style={s.bioText}>
-          🚀 🌎 Exploring the universe and our home planet.
-        </Text>
-        <Text style={s.bioText}>Verification: nasa.gov/socialmedia</Text>
-
-        <View>
-          <Text>Followed by sam007_7, nolangooding and 23 others</Text>
+        {/* Grid */}
+        <View style={s.imageGrid}>
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post1.jpg")}
+          />
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post2.jpg")}
+          />
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post3.jpg")}
+          />
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post4.jpg")}
+          />
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post5.jpg")}
+          />
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post6.jpg")}
+          />
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post1.jpg")}
+          />
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post2.jpg")}
+          />
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post3.jpg")}
+          />
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post4.jpg")}
+          />
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post5.jpg")}
+          />
+          <Image
+            style={s.gridImage}
+            source={require("../assets/images/post6.jpg")}
+          />
         </View>
-      </View>
-
-      {/* Contact Section */}
-      <View style={s.contactButtons}>
-        <View style={[s.buttons, s.followButton]}>
-          <Text style={[s.buttonText, s.buttonTextPrimary]}>Follow</Text>
-        </View>
-        <View style={[s.buttons, s.altButton]}>
-          <Text style={s.buttonText}>Message</Text>
-        </View>
-        <View style={[s.buttons, s.altButton]}>
-          <Text style={s.buttonText}>Email</Text>
-        </View>
-      </View>
-
-      {/* Circl Icons */}
-      <View style={s.circleIcons}>
-        <View style={s.circleItem}>
-          <View style={s.iconCircle}>
-            <MaterialIcons name="phone-iphone" size={24} color="#0066ff" />
-          </View>
-          <Text style={s.circleText}>Wallpapers</Text>
-        </View>
-        <View style={s.circleItem}>
-          <View style={s.iconCircle}>
-            <MaterialCommunityIcons
-              name="google-downasaur"
-              size={24}
-              color="#0066ff"
-            />
-          </View>
-          <Text style={s.circleText}>Streaming</Text>
-        </View>
-        <View style={s.circleItem}>
-          <View style={s.iconCircle}>
-            <Entypo name="mic" size={24} color="#0066ff" />
-          </View>
-          <Text style={s.circleText}>Podcasts</Text>
-        </View>
-        <View style={s.circleItem}>
-          <View style={s.iconCircle}>
-            <FontAwesome6 name="shuttle-space" size={24} color="#0066ff" />
-          </View>
-          <Text style={s.circleText}>Missions</Text>
-        </View>
-        <View style={s.circleItem}>
-          <View style={s.iconCircle}>
-            <Foundation name="clipboard-pencil" size={24} color="#0066ff" />
-          </View>
-          <Text style={s.circleText}>Join Us</Text>
-        </View>
-      </View>
-
-      {/* Grid */}
-      <View style={s.imageGrid}>
-        <Image
-          style={s.gridImage}
-          source={require("../assets/images/post1.jpg")}
-        />
-        <Image
-          style={s.gridImage}
-          source={require("../assets/images/post2.jpg")}
-        />
-        <Image
-          style={s.gridImage}
-          source={require("../assets/images/post3.jpg")}
-        />
-        <Image
-          style={s.gridImage}
-          source={require("../assets/images/post4.jpg")}
-        />
-        <Image
-          style={s.gridImage}
-          source={require("../assets/images/post5.jpg")}
-        />
-        <Image
-          style={s.gridImage}
-          source={require("../assets/images/post6.jpg")}
-        />
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
