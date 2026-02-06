@@ -1,25 +1,28 @@
 import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  Dimensions,
-  Pressable,
-  ScrollView,
-  Alert,
-} from "react-native";
-import {
   Entypo,
-  MaterialIcons,
-  MaterialCommunityIcons,
   FontAwesome6,
   Foundation,
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
 } from "@expo/vector-icons";
-import { SafeAreaView } from "react-native-safe-area-context";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
+import {
+  Alert,
+  Dimensions,
+  Image,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import RocketTakeOff from "./rocket";
 
-//gets screen width and makes each image 1 thrid of the screen to make all the images even
+// gets screen width and makes each image 1 third of the screen
 const screenWidth = Dimensions.get("window").width;
 const imageSize = screenWidth / 3;
 
@@ -32,7 +35,6 @@ export default function Feed() {
     setLaunchSignal((n) => n + 1);
   };
 
-  // required Alert button
   const handleAlertPress = () => {
     Alert.alert("Alert Button pressed");
   };
@@ -41,187 +43,266 @@ export default function Feed() {
     <SafeAreaView style={s.container}>
       <RocketTakeOff launchSignal={launchSignal} />
 
-      {/* paddingBottom so bottom button doesn’t cover content */}
       <ScrollView contentContainerStyle={s.scrollContent}>
-        {/* Nav Row */}
-        <View style={s.navRow}>
-          <View style={s.navLeft}>
+        <View style={s.totalSpace}>
+          {/* Nav Row */}
+          <View style={s.navRow}>
+            <View style={s.navLeft}>
+              <Entypo
+                name="chevron-thin-left"
+                size={22}
+                color="black"
+                style={{ marginVertical: "auto" }}
+              />
+              <Text style={s.navName}>nasa</Text>
+              <MaterialIcons
+                name="verified"
+                size={16}
+                color="#0397fe"
+                style={{ marginVertical: "auto" }}
+              />
+            </View>
+
+            <StatusBar style="dark" />
+
             <Entypo
-              name="chevron-thin-left"
-              size={22}
-              color="black"
-              style={{ marginVertical: "auto" }}
-            />
-            <Text style={s.navName}>nasa</Text>
-            <MaterialIcons
-              name="verified"
-              size={16}
-              color="#0397fe"
+              name="dots-three-horizontal"
+              size={18}
+              color="grey"
               style={{ marginVertical: "auto" }}
             />
           </View>
-          <Entypo
-            name="dots-three-horizontal"
-            size={18}
-            color="grey"
-            style={{ marginVertical: "auto" }}
-          />
-        </View>
 
-        <View style={s.bio}>
-          {/* Profile Picture */}
-          <View style={s.topRow}>
-            <View style={s.profilePicContainer}>
-              <Image
-                style={s.profilePicture}
-                source={require("../assets/images/pfp.jpg")}
-              />
+          {/* Bio Section */}
+          <View style={s.bio}>
+            <View style={s.topRow}>
+              <View style={s.profilePicContainer}>
+                <Image
+                  style={s.profilePicture}
+                  source={require("../assets/images/pfp.jpg")}
+                />
+              </View>
+
+              <View style={s.statsRow}>
+                <View>
+                  <Text style={{ marginBottom: 10, fontWeight: "700" }}>
+                    NASA
+                  </Text>
+                  <Text style={s.stat}>4,600</Text>
+                  <Text style={s.statLabel}>posts</Text>
+                </View>
+
+                <View>
+                  <Text style={{ marginBottom: 10 }} />
+                  <Text style={s.stat}>98.5M</Text>
+                  <Text style={s.statLabel}>followers</Text>
+                </View>
+
+                <View>
+                  <Text style={{ marginBottom: 10 }} />
+                  <Text style={s.stat}>92</Text>
+                  <Text style={s.statLabel}>following</Text>
+                </View>
+              </View>
             </View>
 
-            {/* Stats Row */}
-            <View style={s.statsRow}>
-              <View>
-                <Text style={{ marginBottom: 10, fontWeight: 700 }}>NASA</Text>
-                <Text style={s.stat}>4,600</Text>
-                <Text style={s.statLabel}>posts</Text>
+            <View style={s.separationDesc}>
+              <Text style={s.statLabel}>
+                🚀 🌎 Exploring the universe and our home planet.
+              </Text>
+              <Text style={s.statLabel}>
+                Verification: nasa.gov/socialmedia
+              </Text>
+
+              <View style={s.link}>
+                <Text style={{ fontWeight: "bold", lineHeight: 20 }}>
+                  <AntDesign name="link" size={16} color="black" /> www.nasa.gov
+                  and 3 more
+                </Text>
               </View>
 
-              <View>
-                <Text style={{ marginBottom: 10 }}></Text>
-                <Text style={s.stat}>98.5M</Text>
-                <Text style={s.statLabel}>followers</Text>
-              </View>
+              <View style={s.separationFollowed}>
+                <View style={s.followedRow}>
+                  <View style={s.avatarStack}>
+                    <Image
+                      source={require("../assets/images/1 Orange and black.jpg")}
+                      style={[s.iconFollowed, s.avatar]}
+                    />
+                    <Image
+                      source={require("../assets/images/2 pink and black.png")}
+                      style={[s.iconFollowed, s.avatar, s.avatarOverlap]}
+                    />
+                    <Image
+                      source={require("../assets/images/3 blue and white.jpg")}
+                      style={[s.iconFollowed, s.avatar, s.avatarOverlap]}
+                    />
+                  </View>
 
-              <View>
-                <Text style={{ marginBottom: 10 }}></Text>
-                <Text style={s.stat}>92</Text>
-                <Text style={s.statLabel}>following</Text>
+                  <Text style={s.followedText}>
+                    Followed by{" "}
+                    <Text style={s.bold}>sam007_7</Text>,{" "}
+                    <Text style={s.bold}>nolangooding</Text> and{"\n"}
+                    <Text style={s.bold}>23 others</Text>
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
 
-          <Text style={s.bioText}>
-            🚀 🌎 Exploring the universe and our home planet.
-          </Text>
-          <Text style={s.bioText}>Verification: nasa.gov/socialmedia</Text>
+          {/* Contact Buttons */}
+          <View style={s.separationFollowed}>
+            <View style={s.contactButtons}>
+              <Pressable
+                onPress={handleFollowPress}
+                style={[s.buttons, s.followButton]}
+              >
+                <Text style={[s.buttonText, s.buttonTextPrimary]}>
+                  Follow
+                </Text>
+              </Pressable>
 
-          <View>
-            <Text>Followed by sam007_7, nolangooding and 23 others</Text>
+              <View style={[s.buttons, s.altButton]}>
+                <Text style={s.buttonText}>Message</Text>
+              </View>
+
+              <View style={[s.buttons, s.altButton]}>
+                <Text style={s.buttonText}>Email</Text>
+              </View>
+            </View>
           </View>
-        </View>
 
-        {/* Contact Section */}
-        <View style={s.contactButtons}>
-          <Pressable
-            onPress={handleFollowPress}
-            style={[s.buttons, s.followButton]}
+          {/* Circle Icons now scroll horizontally so it doesn’t break */}
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={s.circleIcons}
           >
-            <Text style={[s.buttonText, s.buttonTextPrimary]}>Follow</Text>
-          </Pressable>
-          <View style={[s.buttons, s.altButton]}>
-            <Text style={s.buttonText}>Message</Text>
-          </View>
-          <View style={[s.buttons, s.altButton]}>
-            <Text style={s.buttonText}>Email</Text>
-          </View>
-        </View>
+            <View style={s.circleItem}>
+              <View style={s.outerCircle}>
+                <View style={s.gapCircle}>
+                  <View style={s.iconCircle}>
+                    <MaterialIcons name="phone-iphone" size={24} color="#0066ff" />
+                  </View>
+                </View>
+              </View>
+              <Text style={s.circleText}>Wallpapers</Text>
+            </View>
 
-        {/* Circle Icons now scroll horizontally so it doesn’t break */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={s.circleIcons}
-        >
-          <View style={s.circleItem}>
-            <View style={s.iconCircle}>
-              <MaterialIcons name="phone-iphone" size={24} color="#0066ff" />
+            <View style={s.circleItem}>
+              <View style={s.outerCircle}>
+                <View style={s.gapCircle}>
+                  <View style={s.iconCircle}>
+                    <MaterialCommunityIcons name="google-downasaur" size={24} color="#0066ff" />
+                  </View>
+                </View>
+              </View>
+              <Text style={s.circleText}>Streaming</Text>
             </View>
-            <Text style={s.circleText}>Wallpapers</Text>
-          </View>
-          <View style={s.circleItem}>
-            <View style={s.iconCircle}>
-              <MaterialCommunityIcons
-                name="google-downasaur"
-                size={24}
-                color="#0066ff"
-              />
-            </View>
-            <Text style={s.circleText}>Streaming</Text>
-          </View>
-          <View style={s.circleItem}>
-            <View style={s.iconCircle}>
-              <Entypo name="mic" size={24} color="#0066ff" />
-            </View>
-            <Text style={s.circleText}>Podcasts</Text>
-          </View>
-          <View style={s.circleItem}>
-            <View style={s.iconCircle}>
-              <FontAwesome6 name="shuttle-space" size={24} color="#0066ff" />
-            </View>
-            <Text style={s.circleText}>Missions</Text>
-          </View>
-          <View style={s.circleItem}>
-            <View style={s.iconCircle}>
-              <Foundation name="clipboard-pencil" size={24} color="#0066ff" />
-            </View>
-            <Text style={s.circleText}>Join Us</Text>
-          </View>
-        </ScrollView>
 
-        {/* Grid */}
-        <View style={s.imageGrid}>
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post1.jpg")}
-          />
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post2.jpg")}
-          />
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post3.jpg")}
-          />
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post4.jpg")}
-          />
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post5.jpg")}
-          />
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post6.jpg")}
-          />
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post1.jpg")}
-          />
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post2.jpg")}
-          />
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post3.jpg")}
-          />
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post4.jpg")}
-          />
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post5.jpg")}
-          />
-          <Image
-            style={s.gridImage}
-            source={require("../assets/images/post6.jpg")}
-          />
+            <View style={s.circleItem}>
+              <View style={s.outerCircle}>
+                <View style={s.gapCircle}>
+                  <View style={s.iconCircle}>
+                    <Entypo name="mic" size={24} color="#0066ff" />
+                  </View>
+                </View>
+              </View>
+              <Text style={s.circleText}>Podcasts</Text>
+            </View>
+
+            <View style={s.circleItem}>
+              <View style={s.outerCircle}>
+                <View style={s.gapCircle}>
+                  <View style={s.iconCircle}>
+                    <FontAwesome6 name="shuttle-space" size={24} color="#0066ff" />
+                  </View>
+                </View>
+              </View>
+              <Text style={s.circleText}>Missions</Text>
+            </View>
+
+            <View style={s.circleItem}>
+              <View style={s.outerCircle}>
+                <View style={s.gapCircle}>
+                  <View style={s.iconCircle}>
+                    <Foundation name="clipboard-pencil" size={24} color="#0066ff" />
+                  </View>
+                </View>
+              </View>
+              <Text style={s.circleText}>Join Us</Text>
+            </View>
+          </ScrollView>
+
+          {/*Profile Tab Bar*/}
+          <View style={s.profileTabs}>
+            <View style={[s.tabItem, s.activeTab]}>
+              <Ionicons name="grid-outline" size={22} />
+            </View>
+
+            <View style={s.tabItem}>
+              <Ionicons name="play-outline" size={22} />
+            </View>
+
+            <View style={s.tabItem}>
+              <Ionicons name="person-outline" size={22} />
+            </View>
+          </View>
+
+          {/* Grid */}
+          <View style={s.imageGrid}>
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post1.jpg")}
+            />
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post2.jpg")}
+            />
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post3.jpg")}
+            />
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post4.jpg")}
+            />
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post5.jpg")}
+            />
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post6.jpg")}
+            />
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post1.jpg")}
+            />
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post2.jpg")}
+            />
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post3.jpg")}
+            />
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post4.jpg")}
+            />
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post5.jpg")}
+            />
+            <Image
+              style={s.gridImage}
+              source={require("../assets/images/post6.jpg")}
+            />
+          </View>
         </View>
       </ScrollView>
 
-      {/* required Alert button at bottom */}
+      {/* Bottom Alert */}
       <View style={s.bottomBar}>
         <Pressable style={s.alertButton} onPress={handleAlertPress}>
           <Text style={s.alertButtonText}>Alert</Text>
@@ -235,7 +316,18 @@ const s = StyleSheet.create({
   container: {
     flex: 1,
   },
-
+  totalSpace: {
+    marginTop: 15,
+  },
+  separationDesc: {
+    marginTop: 5,
+  },
+  separationFollowed: {
+    marginTop: 8,
+  },
+  separationIcons: {
+    marginTop: 12,
+  },
   // ✅ YOUR PART
   scrollContent: {
     paddingBottom: 90,
@@ -244,9 +336,6 @@ const s = StyleSheet.create({
   bio: {
     paddingHorizontal: 16,
     paddingTop: 10,
-  },
-  bioText: {
-    fontWeight: 100,
   },
   line: {
     fontSize: 14,
@@ -289,20 +378,38 @@ const s = StyleSheet.create({
     justifyContent: "space-around",
   },
   stat: {
-    fontWeight: 600,
+    fontWeight: "600",
     fontSize: 17,
   },
   statLabel: {
-    fontWeight: 100,
+    fontWeight: "400",
   },
   imageGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
   },
+  link: {
+    marginTop: 6,
+  },
+  followed: {
+    marginTop: 7,
+  },
   gridImage: {
     //uses the screen width calculation here
     width: imageSize,
-    height: imageSize,
+    height: 230,
+    borderWidth: 0.5,
+    borderColor: "#fff",
+  },
+  iconFollowed: {
+    width: 32,
+    height: 32,
+    borderWidth: 3,
+    borderRadius: 20,
+    backgroundColor: "black",
+    borderColor: "#ffffffff",
+    alignItems: "center",
+    justifyContent: "center",
   },
   contactButtons: {
     flexDirection: "row",
@@ -331,13 +438,60 @@ const s = StyleSheet.create({
   buttonTextPrimary: {
     color: "#fff",
   },
+  // Profile Tab Bar
+  profileTabs: {
+    flexDirection: "row",
+    borderTopWidth: 8,
+    borderTopColor: "#f5f3f3ff",
+  },
+
+  tabItem: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+  },
+
+  activeTab: {
+    borderBottomWidth: 2,
+    borderBottomColor: "#000",
+  },
+  // for the profiles icons before the accounts that follows NASA
+  followedRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 7,
+  },
+
+  avatarStack: {
+    flexDirection: "row",
+    marginRight: 6,
+  },
+
+  avatar: {
+    marginLeft: 0,
+  },
+
+  avatarOverlap: {
+    marginLeft: -8, // 👈 overlap amount (Instagram-like)
+  },
+
+  followedText: {
+    fontSize: 13,
+    color: "#262626",
+    lineHeight: 16,
+  },
+
+  bold: {
+    fontWeight: "600",
+  },
 
   // circleIcons now used as ScrollView contentContainerStyle
   circleIcons: {
     flexDirection: "row",
     paddingHorizontal: 16,
     marginTop: 14,
-    gap: 20,
+    gap: 13,
     paddingBottom: 6,
   },
   circleItem: {
@@ -346,9 +500,13 @@ const s = StyleSheet.create({
   circleText: {
     fontSize: 12,
     marginTop: 6,
-    fontWeight: 100,
+    fontWeight: "400",
     color: "#303030",
+    textAlign: "center",
+    maxWidth: 80,
+    lineHeight: 14,
   },
+
   iconCircle: {
     width: 60,
     height: 60,
@@ -358,7 +516,24 @@ const s = StyleSheet.create({
     borderColor: "#0066ff",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 6,
+  },
+  outerCircle: {
+    width: 70,
+    height: 70,
+    borderWidth: 4,
+    borderRadius: 35,
+    backgroundColor: "white",
+    borderColor: "hsla(0, 0%, 86%, 1.00)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  gapCircle: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: "#f2f2f2", // subtle light ring
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   // bottom alert bar/button
